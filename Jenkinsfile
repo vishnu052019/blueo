@@ -13,5 +13,23 @@ pipeline {
       }
     }
 
+    stage('Package') {
+      steps {
+        sh 'mvn package'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        sh 'java -jar target/'
+      }
+    }
+
+    stage('End') {
+      steps {
+        sh 'echo "end of pipeline"'
+      }
+    }
+
   }
 }
